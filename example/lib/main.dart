@@ -28,7 +28,7 @@ class HomePageState extends State<HomePage> {
   LiveData liveData;
 
   HomePageState() {
-    liveData = LiveData<int>(initValue: 0);
+    liveData = LiveData<int>(0);
 
     Timer.periodic(Duration(seconds: 1), (timer) {
       liveData.value += 1;

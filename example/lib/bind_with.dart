@@ -31,7 +31,7 @@ class HomePageState extends State<HomePage> with LifeCycleObserver {
   HomePageState() {
     _toDisposes = [];
 
-    liveData = LiveData.bindWith(this, initValue: 0);
+    liveData = LiveData(0).bind(this);
 
     Timer.periodic(Duration(seconds: 1), (timer) {
       liveData.value += 1;

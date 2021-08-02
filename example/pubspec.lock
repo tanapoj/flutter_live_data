@@ -68,7 +68,7 @@ packages:
       name: flutter_live_data
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.1"
+    version: "1.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter

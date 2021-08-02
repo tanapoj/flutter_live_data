@@ -1,5 +1,5 @@
 name: flutter_live_data_example
-version: 0.0.3
+version: 1.0.0
 author: Tanapoj Chaivanichanan <tanapoj@centrilliontech.co.th>
 homepage: https://github.com/tanapoj/flutter_live_data
 
@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_live_data: ^0.0.1
+  flutter_live_data: 1.0.0
 
 dev_dependencies:
   flutter_test:
