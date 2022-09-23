@@ -1,15 +1,15 @@
 name: flutter_live_data
-description: Live Data in Flutter
-version: 1.0.1
-author:
-homepage: https://www.centrilliontech.co.th
+description: LiveData for Flutter
+version: 2.1.1
+homepage: https://github.com/tanapoj/flutter_live_data
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
+  logger: ^1.1.0
 
 dev_dependencies:
   flutter_test:

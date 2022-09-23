@@ -1,6 +1,5 @@
 name: flutter_live_data_example
-version: 1.0.0
-author: Tanapoj Chaivanichanan <tanapoj@centrilliontech.co.th>
+version: 2.1.1
 homepage: https://github.com/tanapoj/flutter_live_data
 
 environment:
