@@ -17,3 +17,7 @@ Refactor to Null-Safety
 ## [2.1.1] - 23 Sep 2022
 
 update API to version 2
+
+## [2.1.4] - 2 Nov 2022
+
+Fixed Bug + dart package

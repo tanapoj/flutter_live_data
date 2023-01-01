@@ -16,13 +16,13 @@ class LiveData<T> implements LifeCycleObservable {
   List<void Function(LiveData<T> liveData)> apples = [];
 
   LiveData(
-    T initValue, {
-    this.name,
-    this.verifyDataChange = false,
-    StreamController<T>? streamController,
-    LifeCycleOwner? owner,
-    leisim.Logger? logger,
-  })  : initialValue = initValue,
+      T initValue, {
+        this.name,
+        this.verifyDataChange = false,
+        StreamController<T>? streamController,
+        LifeCycleOwner? owner,
+        leisim.Logger? logger,
+      })  : initialValue = initValue,
         _currentValue = initValue {
     this.logger = logger ?? Logger.instance;
     this.streamController = streamController ?? StreamController<T>.broadcast();
@@ -32,13 +32,13 @@ class LiveData<T> implements LifeCycleObservable {
   }
 
   factory LiveData.broadcast(
-    T initValue, {
-    String? name,
-    bool verifyDataChange = false,
-    StreamController<T>? streamController,
-    LifeCycleOwner? observeOn,
-    Logger? logger,
-  }) {
+      T initValue, {
+        String? name,
+        bool verifyDataChange = false,
+        StreamController<T>? streamController,
+        LifeCycleOwner? observeOn,
+        Logger? logger,
+      }) {
     return LiveData(
       initValue,
       name: name,
@@ -50,13 +50,13 @@ class LiveData<T> implements LifeCycleObservable {
   }
 
   factory LiveData.single(
-    T initValue, {
-    String? name,
-    bool verifyDataChange = false,
-    StreamController<T>? streamController,
-    LifeCycleOwner? observeOn,
-    Logger? logger,
-  }) {
+      T initValue, {
+        String? name,
+        bool verifyDataChange = false,
+        StreamController<T>? streamController,
+        LifeCycleOwner? observeOn,
+        Logger? logger,
+      }) {
     LiveData<T> _this = LiveData<T>(
       initValue,
       name: name,
@@ -73,14 +73,14 @@ class LiveData<T> implements LifeCycleObservable {
   }
 
   factory LiveData.stream(
-    T initValue,
-    Stream<T> stream, {
-    String? name,
-    bool verifyDataChange = false,
-    StreamController<T>? streamController,
-    LifeCycleOwner? observeOn,
-    Logger? logger,
-  }) {
+      T initValue,
+      Stream<T> stream, {
+        String? name,
+        bool verifyDataChange = false,
+        StreamController<T>? streamController,
+        LifeCycleOwner? observeOn,
+        Logger? logger,
+      }) {
     streamController ??= StreamController<T>.broadcast();
     streamController.addStream(stream);
     return LiveData(
@@ -122,9 +122,9 @@ class LiveData<T> implements LifeCycleObservable {
       return;
     }
 
-    _currentValue = value;
     logger.i('${Logger.tag('[LIVEDATA${name == null ? '' : ': $name'}]')} '
         'set value: $_currentValue --> $value');
+    _currentValue = value;
 
     if (apples.isNotEmpty) {
       for (var fn in apples) {
@@ -181,15 +181,22 @@ class LiveData<T> implements LifeCycleObservable {
   void close() {
     logger.i('${Logger.tag('[LIVEDATA${name == null ? '' : ': $name'}]')} '
         'close.');
+    if (attachedItems.isNotEmpty) {
+      for (var l in attachedItems.values) {
+        if (l is LiveData) {
+          l.close();
+        }
+      }
+    }
     streamController.close();
   }
 
   StreamSubscription<T>? listen(
-    void Function(T value) onData, {
-    void Function()? onDone,
-    Function? onError,
-    bool? cancelOnError,
-  }) {
+      void Function(T value) onData, {
+        void Function()? onDone,
+        Function? onError,
+        bool? cancelOnError,
+      }) {
     StreamSubscription<T>? subscription = stream?.listen(
       onData,
       onError: onError,
@@ -221,10 +228,10 @@ class _Just<T> {
 }
 
 LiveData<C> attach<P, C>(
-  LiveData<P> parent,
-  C child, {
-  String? name,
-}) {
+    LiveData<P> parent,
+    C child, {
+      String? name,
+    }) {
   return parent.attachedItems[child] = LiveData<C>(
     child,
     name: name ?? (parent.name != null ? '${parent.name}-child' : null),

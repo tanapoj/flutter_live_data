@@ -6,6 +6,11 @@ class LiveDataSource<T> extends LiveData<T> {
 
   LiveDataSource(
     super.initValue, {
+    super.name,
+    super.verifyDataChange,
+    super.streamController,
+    super.owner,
+    super.logger,
     DataSourceInterface? dataSourceInterface,
   }) {
     _init();
