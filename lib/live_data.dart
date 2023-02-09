@@ -94,7 +94,7 @@ class LiveData<T> implements LifeCycleObservable {
   }
 
   LiveData<T> owner(LifeCycleOwner lifeCycleOwner) {
-    logger.d('${Logger.tag('[LIVEDATA${name == null ? '' : ': $name'}]')} '
+    logger.i('${Logger.tag('[LIVEDATA${name == null ? '' : ': $name'}]')} '
         'subscribe on lifeCycleOwner: $lifeCycleOwner');
     _lifeCycleObserver = lifeCycleOwner;
     _lifeCycleObserver?.observeLiveData<T>(this);

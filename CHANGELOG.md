@@ -21,3 +21,15 @@ update API to version 2
 ## [2.1.4] - 2 Nov 2022
 
 Fixed Bug + dart package
+
+## [2.1.5] - 16 Jan 2023
+
+change log level
+
+## [2.2.2] - 2 Feb 2023
+
+add LiveSource and deprecate LiveDataSource
+
+## [2.2.5] - 9 Feb 2023
+
+add asyncValue for LiveSource and fix set value in sync
